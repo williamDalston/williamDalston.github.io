@@ -1,0 +1,10 @@
+# app-ads.txt file for Ritual7 iOS App
+# This file helps prevent ad fraud and ensures proper revenue attribution
+
+# Google AdMob (Primary ad network)
+google.com, pub-2214618538122354, DIRECT, f08c47fec0942fa0
+
+# Add other ad networks here if you use them in the future
+# Example formats:
+# facebook.com, 123456789, DIRECT, c3e20eee3f780d68
+# amazon-adsystem.com, 123456789, DIRECT, f08c47fec0942fa0
