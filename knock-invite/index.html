@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knock</title>
+<style>
+  :root {
+    --midnight: #0E1220; --ember: #F0854A; --halo: #FFC46B;
+    --moonlight: #E9ECF4; --ash: #8A8F9E;
+    --rose: #E86A8A; --gold: #E9B44C; --moss: #8FB573;
+    --alpine: #6FA8DC; --violet: #A98BD4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--midnight); color: var(--moonlight); min-height: 100vh;
+    font-family: -apple-system, "SF Pro Rounded", BlinkMacSystemFont, sans-serif;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; padding: 24px; gap: 18px;
+  }
+  .ember-wrap { position: relative; width: 140px; height: 140px; }
+  .halo {
+    position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle, var(--glow, var(--ember)) 0%, transparent 65%);
+    opacity: 0.5; animation: breathe 2.6s ease-in-out infinite;
+  }
+  .core {
+    position: absolute; top: 50%; left: 50%; width: 44px; height: 44px;
+    transform: translate(-50%, -50%); border-radius: 50%;
+    background: var(--glow, var(--ember));
+    box-shadow: 0 0 28px var(--glow, var(--ember));
+  }
+  @keyframes breathe { 0%,100% { transform: scale(0.94); } 50% { transform: scale(1.07); } }
+  h1 { font-size: 1.6rem; font-weight: 600; }
+  p { color: var(--ash); font-size: 1rem; line-height: 1.5; max-width: 320px; }
+  .cta {
+    margin-top: 10px; display: inline-block; background: var(--moonlight);
+    color: var(--midnight); font-weight: 600; font-size: 1.05rem;
+    padding: 14px 34px; border-radius: 999px; text-decoration: none;
+  }
+  .quiet { font-size: 0.8rem; color: var(--ash); opacity: 0.75; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="ember-wrap"><div class="halo"></div><div class="core"></div></div>
+  <h1 id="headline">Knock</h1>
+  <p id="sub">One tap says everything.</p>
+  <a class="cta" id="cta" href="#">Get Knock</a>
+  <div class="quiet">No feed. No messages. No phone numbers.</div>
+<script>
+  const PEEK = "https://ukemwcotxfiwlrefqrku.supabase.co/functions/v1/invite-peek";
+  const token = location.hash.slice(1);
+  const uuidRe = /^[0-9a-f-]{36}$/;
+  if (uuidRe.test(token)) {
+    document.getElementById("cta").href = "knock://invite/" + token;
+    fetch(PEEK + "?token=" + token)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (!d) return;
+        const hue = getComputedStyle(document.documentElement).getPropertyValue("--" + d.color) || "#F0854A";
+        document.documentElement.style.setProperty("--glow", hue.trim());
+        const name = d.display_name || "Someone";
+        document.getElementById("headline").textContent = name + " is knocking";
+        document.getElementById("sub").textContent =
+          "Their ember is waiting to light up your phone. Knock back.";
+        document.getElementById("cta").textContent = "Answer the knock";
+      })
+      .catch(() => {});
+  }
+  // Until the App Store listing exists, the CTA deep-links into the app for
+  // TestFlight users; the store URL replaces it at launch (Phase 8).
+</script>
+</body>
+</html>
