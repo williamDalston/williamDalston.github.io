@@ -80,9 +80,15 @@
     line-height: 1.1;
     letter-spacing: -0.015em;
     margin: 0 0 14px;
+    text-wrap: balance;
   }
 
-  .intro { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); margin: 0; }
+  .intro {
+    color: var(--muted);
+    font-size: clamp(16px, 2.2vw, 18px);
+    margin: 0;
+    text-wrap: pretty;
+  }
 
   .count {
     display: inline-block;
@@ -110,7 +116,13 @@
 
   .head .rule { flex: 1; height: 1px; background: var(--line); }
 
-  .note { color: var(--faint); font-size: 14.5px; margin: -6px 0 18px; max-width: 46ch; }
+  .note {
+    color: var(--faint);
+    font-size: 14.5px;
+    margin: -6px 0 18px;
+    max-width: 46ch;
+    text-wrap: pretty;
+  }
 
   /* grid + cards */
   .grid {
@@ -222,6 +234,7 @@
     font-size: 14px;
     line-height: 1.4;
     margin-top: 3px;
+    text-wrap: pretty;
   }
 
   .price {
