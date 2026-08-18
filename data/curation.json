@@ -1,0 +1,86 @@
+{
+  "_readme": [
+    "This is the only file you should ever need to edit by hand.",
+    "The site rebuilds itself from the App Store every day, so a newly approved app",
+    "appears on its own. It lands in a group chosen from its App Store genre and gets",
+    "a subtitle taken from the first line of its store description. If you want it",
+    "somewhere else, or want better words, add an entry under 'apps' below.",
+    "An app listed under 'comingSoon' disappears from that section automatically the",
+    "day it goes live, and reappears in its real group. Nothing to clean up."
+  ],
+
+  "artistId": 1681395170,
+
+  "headline": "{N} apps in production.",
+  "intro": "Native iOS apps by William Alston, each one designed, built, and shipped end to end: interface, backend, payments, and the release pipeline. I also build AI and data systems for public sector and enterprise work.",
+  "description": "{N} native iOS apps by William Alston, designed, built, and shipped end to end, alongside AI and data systems for public sector and enterprise work.",
+
+  "groups": [
+    { "id": "daily",    "title": "A minute a day",          "note": "Habits that survive a bad week, because they never ask for much." },
+    { "id": "think",    "title": "Something to think about", "note": "One puzzle, one case, one word. Quiet games for a sharper head." },
+    { "id": "people",   "title": "People you care about",    "note": "Built for two, or for the handful of people you keep meaning to call." },
+    { "id": "world",    "title": "Out in the world",         "note": "Getting somewhere, and remembering where you have been." },
+    { "id": "everyday", "title": "Everyday",                 "note": "The small decisions and the small paperwork." }
+  ],
+
+  "genreToGroup": {
+    "Health & Fitness": "daily",
+    "Productivity":     "daily",
+    "Education":        "daily",
+    "Medical":          "daily",
+    "Games":            "think",
+    "Entertainment":    "think",
+    "Books":            "think",
+    "Reference":        "think",
+    "Social Networking": "people",
+    "Travel":           "world",
+    "Navigation":       "world",
+    "Weather":          "world",
+    "Sports":           "world",
+    "Finance":          "everyday",
+    "Business":         "everyday",
+    "Utilities":        "everyday",
+    "Shopping":         "everyday",
+    "Food & Drink":     "everyday",
+    "Photo & Video":    "everyday",
+    "Music":            "everyday",
+    "Lifestyle":        "everyday"
+  },
+  "fallbackGroup": "everyday",
+
+  "exclude": [],
+
+  "apps": {
+    "6447466116": { "group": "daily",  "name": "Mindful Jot",        "sub": "Journal, mood, and breathe" },
+    "6752586327": { "group": "daily",  "name": "OneTapGratitude",    "sub": "Build a daily habit in seconds" },
+    "6748622640": { "group": "daily",  "name": "AI Zen Garden",      "sub": "Breathe, tap, and grow" },
+    "6754951122": { "group": "daily",  "name": "Alston Focus Flow",  "sub": "A Pomodoro timer that stays calm" },
+    "6754944691": { "group": "daily",  "name": "Ritual7",            "sub": "Seven minutes, no equipment" },
+    "6792511105": { "group": "daily",  "name": "Soapbox",            "sub": "A two minute speaking habit" },
+
+    "6792477637": { "group": "think",  "name": "Radix",              "sub": "Where words actually come from" },
+    "6792477671": { "group": "think",  "name": "Provenance",         "sub": "One authentication case a day" },
+    "6792498652": { "group": "think",  "name": "Serene Chess",       "sub": "Tactics, engine, and review" },
+    "6801944894": { "group": "think",  "name": "The Weeping Knight", "sub": "Rustaveli's epic, as a quest" },
+
+    "6792412633": { "group": "people", "name": "Knock",              "sub": "Tap to light up their phone" },
+    "6792507575": { "group": "people", "name": "Embers",             "sub": "Don't let friendships fade" },
+    "6792674006": { "group": "people", "name": "NameWise",           "sub": "Swipe and match baby names with your partner" },
+    "6792492536": { "group": "people", "name": "Timbre",             "sub": "Voice memories for family" },
+
+    "6792505104": { "group": "world",  "name": "Ausgang",            "sub": "Get to the actual door" },
+    "6787550701": { "group": "world",  "name": "Heute City",         "sub": "Berlin events and day plans" },
+    "6794951044": { "group": "world",  "name": "Together",           "sub": "A calm New York City trip planner" },
+    "6792402683": { "group": "world",  "name": "Cairn",              "sub": "Track parks, peaks, and states" },
+
+    "6792414999": { "group": "everyday", "name": "Getup",            "sub": "Instant fit checks and style" },
+    "6794616249": { "group": "everyday", "name": "Cosma",            "sub": "Know what to wear and buy" },
+    "6792477792": { "group": "everyday", "name": "Beleg",            "sub": "Receipts to spreadsheet, for freelancers" },
+
+    "6756985128": { "group": "daily",  "name": "Sovereign Mind",     "sub": "Daily practice that remembers what you miss" }
+  },
+
+  "comingSoon": [
+    { "id": 6756985128, "name": "Sovereign Mind", "sub": "Daily practice that remembers what you miss" }
+  ]
+}

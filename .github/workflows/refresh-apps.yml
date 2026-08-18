@@ -1,0 +1,47 @@
+name: Refresh app list
+
+# Rebuilds index.html from the App Store so a newly approved app appears on
+# its own. Runs daily, on any change to the site's inputs, and on demand.
+on:
+  schedule:
+    - cron: '17 6 * * *'      # 06:17 UTC daily
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/curation.json'
+      - 'scripts/build-site.mjs'
+      - 'scripts/page.css'
+      - '.github/workflows/refresh-apps.yml'
+
+concurrency:
+  group: refresh-apps
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Rebuild from the App Store
+        run: node scripts/build-site.mjs
+
+      - name: Commit if anything changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No change."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Refresh app list from the App Store [skip ci]"
+          git push
