@@ -74,15 +74,36 @@ h1 {
   text-wrap: pretty;
 }
 
+.metarow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 18px;
+  margin-top: 20px;
+}
+
 .count {
-  display: inline-block;
-  margin-top: 18px;
   font-size: 13px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 650;
   color: var(--accent);
 }
+
+.contact {
+  font-size: 15px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color .2s ease, border-color .2s ease;
+}
+.contact:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.contact:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.contact .label { color: var(--faint); }
 
 /* section headings */
 section { margin-top: clamp(38px, 5vw, 54px); }

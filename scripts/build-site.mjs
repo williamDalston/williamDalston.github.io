@@ -233,13 +233,26 @@ ${css.trim().split('\n').map((l) => (l ? '  ' + l : l)).join('\n')}
 <header>
   <h1>${esc(headline)}</h1>
   <p class="intro">${esc(intro)}</p>
-  <div class="count">${n} on the App Store</div>
+  <div class="metarow">
+    <span class="count">${n} on the App Store</span>${
+    curation.contactEmail
+      ? `\n    <a class="contact" href="mailto:${esc(curation.contactEmail)}">` +
+        `<span class="label">${esc(curation.contactLabel || 'Get in touch')}:</span> ` +
+        `${esc(curation.contactEmail)}</a>`
+      : ''
+  }
+  </div>
 </header>
 ${sections}
 ${soonSection}
 
 <footer>
-  <span>&copy; ${new Date().getUTCFullYear()} William Alston</span>
+  <span>&copy; ${new Date().getUTCFullYear()} William Alston</span>${
+    curation.contactEmail
+      ? `\n  <span class="sep">&middot;</span>\n  ` +
+        `<a href="mailto:${esc(curation.contactEmail)}">${esc(curation.contactEmail)}</a>`
+      : ''
+  }
   <span class="sep">&middot;</span>
   <a href="/app-policies/support.html">Support</a>
   <span class="sep">&middot;</span>

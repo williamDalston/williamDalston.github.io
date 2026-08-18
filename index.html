@@ -91,15 +91,36 @@
     text-wrap: pretty;
   }
 
+  .metarow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 18px;
+    margin-top: 20px;
+  }
+
   .count {
-    display: inline-block;
-    margin-top: 18px;
     font-size: 13px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     font-weight: 650;
     color: var(--accent);
   }
+
+  .contact {
+    font-size: 15px;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color .2s ease, border-color .2s ease;
+  }
+  .contact:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .contact:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .contact .label { color: var(--faint); }
 
   /* section headings */
   section { margin-top: clamp(38px, 5vw, 54px); }
@@ -324,7 +345,10 @@
 <header>
   <h1>Twenty-one apps in production.</h1>
   <p class="intro">Native iOS apps by William Alston, each one designed, built, and shipped end to end: interface, backend, payments, and the release pipeline. I also build AI and data systems for public sector and enterprise work.</p>
-  <div class="count">21 on the App Store</div>
+  <div class="metarow">
+    <span class="count">21 on the App Store</span>
+    <a class="contact" href="mailto:will@alstonanalytics.com"><span class="label">Available for client work:</span> will@alstonanalytics.com</a>
+  </div>
 </header>
 
 <section>
@@ -525,6 +549,8 @@
 
 <footer>
   <span>&copy; 2026 William Alston</span>
+  <span class="sep">&middot;</span>
+  <a href="mailto:will@alstonanalytics.com">will@alstonanalytics.com</a>
   <span class="sep">&middot;</span>
   <a href="/app-policies/support.html">Support</a>
   <span class="sep">&middot;</span>

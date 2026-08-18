@@ -11,6 +11,9 @@
 
   "artistId": 1681395170,
 
+  "contactEmail": "will@alstonanalytics.com",
+  "contactLabel": "Available for client work",
+
   "headline": "{N} apps in production.",
   "intro": "Native iOS apps by William Alston, each one designed, built, and shipped end to end: interface, backend, payments, and the release pipeline. I also build AI and data systems for public sector and enterprise work.",
   "description": "{N} native iOS apps by William Alston, designed, built, and shipped end to end, alongside AI and data systems for public sector and enterprise work.",
