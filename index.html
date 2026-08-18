@@ -4,20 +4,196 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>William Alston — Apps</title>
+<meta name="description" content="iOS apps by William Alston — daily practice, focus, chess, journaling, and more.">
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 640px; margin: 40px auto; padding: 0 20px; color: #2c3e50; line-height: 1.6; }
-  h1 { border-bottom: 3px solid #3498db; padding-bottom: 10px; }
-  a { color: #3498db; }
-  li { margin: 8px 0; }
+  :root {
+    --bg: #fbfaf8;
+    --card: #ffffff;
+    --ink: #22303c;
+    --muted: #5c6b78;
+    --line: #e5e1da;
+    --accent: #2f6f8f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14181c;
+      --card: #1d2329;
+      --ink: #e8e6e1;
+      --muted: #9aa7b1;
+      --line: #2c343c;
+      --accent: #7ab8d4;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg); color: var(--ink);
+    max-width: 960px; margin: 0 auto; padding: 48px 20px 64px;
+    line-height: 1.6;
+  }
+  header { margin-bottom: 36px; }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0; font-size: 16px; }
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin: 40px 0 14px; font-weight: 700;
+  }
+  .grid {
+    display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  }
+  .card {
+    display: block; background: var(--card);
+    border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 18px; text-decoration: none; color: inherit;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .card .name { font-weight: 650; font-size: 16px; }
+  .card .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
+  .card .store { color: var(--accent); font-size: 13px; font-weight: 600; margin-top: 8px; }
+  .card.soon { opacity: 0.75; }
+  .card.soon .store { color: var(--muted); font-weight: 500; }
+  footer {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 14px;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
-<h1>William Alston — Apps</h1>
-<ul>
-  <li><strong>Ritual7</strong> — 7-minute HIIT workout app —
-    <a href="https://apps.apple.com/us/app/ritual7/id6754944691">App Store</a> ·
-    <a href="/support-and-markup/support.html">Support</a> ·
-    <a href="/support-and-markup/privacy.html">Privacy</a></li>
-</ul>
+<header>
+  <h1>William Alston — Apps</h1>
+  <p class="tagline">Small, honest iOS apps for daily practice, focus, and keeping in touch.</p>
+</header>
+
+<h2>On the App Store</h2>
+<div class="grid">
+  <a class="card" href="https://apps.apple.com/app/id6447466116">
+    <div class="name">Mindful Jot</div>
+    <div class="sub">Journal, mood, and breathe</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792674006">
+    <div class="name">NameWise: Baby Names Together</div>
+    <div class="sub">Swipe &amp; match with your partner</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792412633">
+    <div class="name">Knock: Friend &amp; Couple Widget</div>
+    <div class="sub">Tap to light up their phone</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792511105">
+    <div class="name">Soapbox: Daily Speech Coach</div>
+    <div class="sub">Daily 2-minute speaking habit</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792498652">
+    <div class="name">Serene Chess: Puzzles</div>
+    <div class="sub">Tactics, engine &amp; review</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6748622640">
+    <div class="name">AI Zen Garden</div>
+    <div class="sub">Breathe, tap, and grow</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6754951122">
+    <div class="name">Alston Focus Flow</div>
+    <div class="sub">Pomodoro focus timer</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792505104">
+    <div class="name">Ausgang</div>
+    <div class="sub">Get to the actual door</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792477792">
+    <div class="name">Beleg: Receipts to Sheets</div>
+    <div class="sub">Freelancer expense tracker</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792402683">
+    <div class="name">Cairn: Hike Log &amp; Scratch Map</div>
+    <div class="sub">Track parks, peaks &amp; states</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6794616249">
+    <div class="name">Cosma: AI Wardrobe Stylist</div>
+    <div class="sub">Know what to wear &amp; buy</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792507575">
+    <div class="name">Embers: Stay in Touch</div>
+    <div class="sub">Don't let friendships fade</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792414999">
+    <div class="name">Getup: AI Outfit Check</div>
+    <div class="sub">Instant fit checks &amp; style</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6787550701">
+    <div class="name">Heute City</div>
+    <div class="sub">Berlin events and day plans</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6752586327">
+    <div class="name">OneTapGratitude</div>
+    <div class="sub">Build a daily habit in seconds</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792477671">
+    <div class="name">Provenance: Spot the Fake</div>
+    <div class="sub">One daily authentication case</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792477637">
+    <div class="name">Radix: Daily Word Origins</div>
+    <div class="sub">Etymology, calm brain training</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6754944691">
+    <div class="name">Ritual7</div>
+    <div class="sub">7-minute HIIT, no equipment</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6801944894">
+    <div class="name">The Weeping Knight</div>
+    <div class="sub">Rustaveli's epic, as a quest</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6792492536">
+    <div class="name">Timbre: keep the sound</div>
+    <div class="sub">Voice memories for family</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+  <a class="card" href="https://apps.apple.com/app/id6794951044">
+    <div class="name">Together: NYC Planner</div>
+    <div class="sub">NYC trip planner, calmly</div>
+    <div class="store">App Store &rarr;</div>
+  </a>
+</div>
+
+<h2>On the way</h2>
+<div class="grid">
+  <div class="card soon">
+    <div class="name">Sovereign Mind</div>
+    <div class="sub">Daily practice that remembers</div>
+    <div class="store">In App Review</div>
+  </div>
+  <div class="card soon">
+    <div class="name">Panther Skin</div>
+    <div class="sub">Barrier Scanner</div>
+    <div class="store">In App Review</div>
+  </div>
+</div>
+
+<footer>
+  <a href="/app-policies/support.html">Support</a> &middot;
+  <a href="/app-policies/privacy.html">Privacy</a>
+</footer>
 </body>
 </html>
