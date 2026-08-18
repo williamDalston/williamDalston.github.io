@@ -4,196 +4,532 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>William Alston Apps</title>
-<meta name="description" content="iOS apps by William Alston: daily practice, focus, chess, journaling, and more.">
+<meta name="description" content="Twenty-one small iOS apps for daily practice, thinking, staying in touch, and finding your way around a city.">
+<link rel="canonical" href="https://williamdalston.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="William Alston Apps">
+<meta property="og:description" content="Twenty-one small iOS apps for daily practice, thinking, staying in touch, and finding your way around a city.">
+<meta property="og:url" content="https://williamdalston.github.io/">
+<meta property="og:image" content="https://williamdalston.github.io/icons/6447466116.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%237d9478'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/icons/6447466116.png">
 <style>
   :root {
-    --bg: #fbfaf8;
-    --card: #ffffff;
-    --ink: #22303c;
-    --muted: #5c6b78;
-    --line: #e5e1da;
-    --accent: #2f6f8f;
+    --paper:   #f7f4ee;
+    --card:    #fffdfa;
+    --ink:     #23201c;
+    --muted:   #6d675e;
+    --faint:   #948d82;
+    --line:    #e3ddd2;
+    --accent:  #9a6b3f;
+    --shadow:  rgba(60, 48, 32, 0.10);
+    --ringbed: #d8cfbe;
+    --sheenA:  #c99a5e;
+    --sheenB:  #ffffff;
+    --sheenC:  #8fa98a;
+    --lift1:   rgba(60, 48, 32, 0.18);
+    --lift2:   rgba(60, 48, 32, 0.16);
+    --lift3:   rgba(60, 48, 32, 0.14);
+    --glow:    rgba(201, 154, 94, 0.55);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #14181c;
-      --card: #1d2329;
-      --ink: #e8e6e1;
-      --muted: #9aa7b1;
-      --line: #2c343c;
-      --accent: #7ab8d4;
+      --paper:  #17161a;
+      --card:   #201e23;
+      --ink:    #eae5dc;
+      --muted:  #a49d92;
+      --faint:  #7d766c;
+      --line:   #302d35;
+      --accent: #d9a468;
+      --shadow: rgba(0, 0, 0, 0.45);
+      --ringbed: #3a3542;
+      --sheenA:  #d9a468;
+      --sheenB:  #fff3dd;
+      --sheenC:  #8fb0a4;
+      --lift1:   rgba(0, 0, 0, 0.55);
+      --lift2:   rgba(0, 0, 0, 0.45);
+      --lift3:   rgba(0, 0, 0, 0.40);
+      --glow:    rgba(217, 164, 104, 0.50);
     }
   }
+
   * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--bg); color: var(--ink);
-    max-width: 960px; margin: 0 auto; padding: 48px 20px 64px;
+    margin: 0;
+    padding: clamp(40px, 7vw, 76px) 20px clamp(48px, 6vw, 72px);
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
-  header { margin-bottom: 36px; }
-  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
-  .tagline { color: var(--muted); margin: 0; font-size: 16px; }
+
+  .wrap { max-width: 980px; margin: 0 auto; }
+
+  /* masthead */
+  header { max-width: 34rem; margin-bottom: clamp(36px, 5vw, 56px); }
+
+  h1 {
+    font-family: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    font-size: clamp(34px, 6vw, 46px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 14px;
+  }
+
+  .intro { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); margin: 0; }
+
+  .count {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 650;
+    color: var(--accent);
+  }
+
+  /* section headings */
+  section { margin-top: clamp(38px, 5vw, 54px); }
+
+  .head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+
   h2 {
-    font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--muted); margin: 40px 0 14px; font-weight: 700;
+    font-family: ui-serif, Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+    white-space: nowrap;
   }
+
+  .head .rule { flex: 1; height: 1px; background: var(--line); }
+
+  .note { color: var(--faint); font-size: 14.5px; margin: -6px 0 18px; max-width: 46ch; }
+
+  /* grid + cards */
   .grid {
-    display: grid; gap: 12px;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    perspective: 800px;
   }
+
   .card {
-    display: block; background: var(--card);
-    border: 1px solid var(--line); border-radius: 14px;
-    padding: 16px 18px; text-decoration: none; color: inherit;
-    transition: border-color 0.15s ease, transform 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 17px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform .22s cubic-bezier(.2,.7,.3,1),
+                border-color .22s ease,
+                box-shadow .22s ease;
+    animation: rise .5s cubic-bezier(.2,.7,.3,1) backwards;
+    animation-delay: calc(var(--i, 0) * 40ms);
   }
-  a.card:hover { border-color: var(--accent); transform: translateY(-1px); }
-  .card .name { font-weight: 650; font-size: 16px; }
-  .card .sub { color: var(--muted); font-size: 14px; margin-top: 2px; }
-  .card .store { color: var(--accent); font-size: 13px; font-weight: 600; margin-top: 8px; }
-  .card.soon { opacity: 0.75; }
-  .card.soon .store { color: var(--muted); font-weight: 500; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  /* The icon sits in a ring that catches a slow sweep of light, and rides
+     a little above the card on its own stack of shadows. */
+  .iconwrap {
+    position: relative;
+    width: 58px; height: 58px;
+    flex-shrink: 0;
+    border-radius: 24%;
+    padding: 3px;
+    background: var(--ringbed);
+    overflow: hidden;
+    transition: transform .3s cubic-bezier(.2,.7,.3,1),
+                box-shadow .3s ease;
+    box-shadow:
+      0 1px 2px var(--lift1),
+      0 5px 10px -2px var(--lift2),
+      0 12px 20px -6px var(--lift3);
+  }
+
+  /* the travelling sheen */
+  .iconwrap::before {
+    content: "";
+    position: absolute;
+    inset: -32%;
+    border-radius: inherit;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg 16deg,
+      var(--sheenA) 46deg,
+      var(--sheenB) 68deg,
+      var(--sheenC) 94deg,
+      transparent 126deg 196deg,
+      var(--sheenA) 226deg,
+      var(--sheenB) 248deg,
+      var(--sheenC) 274deg,
+      transparent 306deg 360deg);
+    animation: sweep 7s linear infinite;
+    animation-delay: calc(var(--i, 0) * -900ms);
+    opacity: .85;
+    transition: opacity .3s ease;
+  }
+
+  /* a soft glass highlight across the top edge */
+  .iconwrap::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 22%;
+    background: linear-gradient(160deg,
+      rgba(255,255,255,.30) 0%,
+      rgba(255,255,255,.07) 26%,
+      rgba(255,255,255,0) 50%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  @keyframes sweep { to { transform: rotate(1turn); } }
+
+  .icon {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%; height: 100%;
+    border-radius: 22%;
+    background: var(--line);
+  }
+
+  .text { min-width: 0; }
+
+  .name {
+    font-weight: 650;
+    font-size: 16.5px;
+    letter-spacing: -0.008em;
+    line-height: 1.25;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.4;
+    margin-top: 3px;
+  }
+
+  .price {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 1px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 650;
+    letter-spacing: 0.03em;
+    color: var(--faint);
+  }
+
+  a.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 22px var(--shadow);
+  }
+
+  /* on hover the icon tilts up off the card and the sheen comes to full */
+  a.card:hover .iconwrap,
+  a.card:focus-visible .iconwrap {
+    transform: translateY(-4px) scale(1.06) rotateX(14deg) rotateY(-12deg);
+    box-shadow:
+      0 0 16px -1px var(--glow),
+      0 2px 2px var(--lift1),
+      0 8px 14px -2px var(--lift2),
+      0 20px 30px -8px var(--lift3);
+  }
+  a.card:hover .iconwrap::before,
+  a.card:focus-visible .iconwrap::before {
+    opacity: 1;
+    animation-duration: 2.6s;
+  }
+
+  a.card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-color: var(--accent);
+  }
+
+  /* coming soon */
+  .card.soon { cursor: default; }
+  .card.soon .name { color: var(--muted); }
+
+  .placeholder {
+    display: flex; align-items: center; justify-content: center;
+    font-family: ui-serif, Georgia, serif;
+    font-size: 24px; font-weight: 600;
+    color: var(--faint);
+    background: var(--paper);
+    border: 1px dashed var(--line);
+    box-shadow: none;
+  }
+
+  /* footer */
   footer {
-    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
-    color: var(--muted); font-size: 14px;
+    margin-top: clamp(46px, 6vw, 64px);
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    color: var(--faint);
+    font-size: 14px;
+    display: flex; flex-wrap: wrap; gap: 8px 18px;
+    align-items: center;
   }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
+  footer a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  footer .sep { color: var(--line); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card { animation: none; }
+    .card, .iconwrap { transition: none; }
+    .iconwrap::before { animation: none; opacity: .5; }
+    a.card:hover { transform: none; }
+    a.card:hover .iconwrap,
+    a.card:focus-visible .iconwrap { transform: none; }
+    a.card:hover .iconwrap::before,
+    a.card:focus-visible .iconwrap::before { animation: none; }
+  }
 </style>
 </head>
 <body>
+<div class="wrap">
+
 <header>
-  <h1>William Alston Apps</h1>
-  <p class="tagline">Small, honest iOS apps for daily practice, focus, and keeping in touch.</p>
+  <h1>Small apps, made with care.</h1>
+  <p class="intro">Twenty-one iOS apps by William Alston. Most of them ask for a minute a day and then get out of the way.</p>
+  <div class="count">21 on the App Store</div>
 </header>
 
-<h2>On the App Store</h2>
-<div class="grid">
-  <a class="card" href="https://apps.apple.com/app/id6447466116">
-    <div class="name">Mindful Jot</div>
-    <div class="sub">Journal, mood, and breathe</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792674006">
-    <div class="name">NameWise: Baby Names Together</div>
-    <div class="sub">Swipe &amp; match with your partner</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792412633">
-    <div class="name">Knock: Friend &amp; Couple Widget</div>
-    <div class="sub">Tap to light up their phone</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792511105">
-    <div class="name">Soapbox: Daily Speech Coach</div>
-    <div class="sub">Daily 2-minute speaking habit</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792498652">
-    <div class="name">Serene Chess: Puzzles</div>
-    <div class="sub">Tactics, engine &amp; review</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6748622640">
-    <div class="name">AI Zen Garden</div>
-    <div class="sub">Breathe, tap, and grow</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6754951122">
-    <div class="name">Alston Focus Flow</div>
-    <div class="sub">Pomodoro focus timer</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792505104">
-    <div class="name">Ausgang</div>
-    <div class="sub">Get to the actual door</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792477792">
-    <div class="name">Beleg: Receipts to Sheets</div>
-    <div class="sub">Freelancer expense tracker</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792402683">
-    <div class="name">Cairn: Hike Log &amp; Scratch Map</div>
-    <div class="sub">Track parks, peaks &amp; states</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6794616249">
-    <div class="name">Cosma: AI Wardrobe Stylist</div>
-    <div class="sub">Know what to wear &amp; buy</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792507575">
-    <div class="name">Embers: Stay in Touch</div>
-    <div class="sub">Don't let friendships fade</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792414999">
-    <div class="name">Getup: AI Outfit Check</div>
-    <div class="sub">Instant fit checks &amp; style</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6787550701">
-    <div class="name">Heute City</div>
-    <div class="sub">Berlin events and day plans</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6752586327">
-    <div class="name">OneTapGratitude</div>
-    <div class="sub">Build a daily habit in seconds</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792477671">
-    <div class="name">Provenance: Spot the Fake</div>
-    <div class="sub">One daily authentication case</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792477637">
-    <div class="name">Radix: Daily Word Origins</div>
-    <div class="sub">Etymology, calm brain training</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6754944691">
-    <div class="name">Ritual7</div>
-    <div class="sub">7-minute HIIT, no equipment</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6801944894">
-    <div class="name">The Weeping Knight</div>
-    <div class="sub">Rustaveli's epic, as a quest</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6792492536">
-    <div class="name">Timbre: keep the sound</div>
-    <div class="sub">Voice memories for family</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-  <a class="card" href="https://apps.apple.com/app/id6794951044">
-    <div class="name">Together: NYC Planner</div>
-    <div class="sub">NYC trip planner, calmly</div>
-    <div class="store">App Store &rarr;</div>
-  </a>
-</div>
+<!-- Daily practice -->
+<section>
+  <div class="head"><h2>A minute a day</h2><div class="rule"></div></div>
+  <p class="note">Habits that survive a bad week, because they never ask for much.</p>
+  <div class="grid">
+    <a class="card" style="--i:0" href="https://apps.apple.com/app/id6447466116">
+      <div class="iconwrap"><img class="icon" src="/icons/6447466116.png" alt="Mindful Jot app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">Mindful Jot</div>
+        <div class="sub">Journal, mood, and breathe</div>
+      </div>
+    </a>
+    <a class="card" style="--i:1" href="https://apps.apple.com/app/id6752586327">
+      <div class="iconwrap"><img class="icon" src="/icons/6752586327.png" alt="OneTapGratitude app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">OneTapGratitude</div>
+        <div class="sub">Build a daily habit in seconds</div>
+      </div>
+    </a>
+    <a class="card" style="--i:2" href="https://apps.apple.com/app/id6748622640">
+      <div class="iconwrap"><img class="icon" src="/icons/6748622640.png" alt="AI Zen Garden app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">AI Zen Garden</div>
+        <div class="sub">Breathe, tap, and grow</div>
+      </div>
+    </a>
+    <a class="card" style="--i:3" href="https://apps.apple.com/app/id6754951122">
+      <div class="iconwrap"><img class="icon" src="/icons/6754951122.png" alt="Alston Focus Flow app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">Alston Focus Flow</div>
+        <div class="sub">A Pomodoro timer that stays calm</div>
+      </div>
+    </a>
+    <a class="card" style="--i:4" href="https://apps.apple.com/app/id6754944691">
+      <div class="iconwrap"><img class="icon" src="/icons/6754944691.png" alt="Ritual7 app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">Ritual7</div>
+        <div class="sub">Seven minutes, no equipment</div>
+      </div>
+    </a>
+    <a class="card" style="--i:5" href="https://apps.apple.com/app/id6792511105">
+      <div class="iconwrap"><img class="icon" src="/icons/6792511105.png" alt="Soapbox app icon" width="58" height="58"></div>
+      <div class="text">
+        <div class="name">Soapbox</div>
+        <div class="sub">A two minute speaking habit</div>
+      </div>
+    </a>
+  </div>
+</section>
 
-<h2>On the way</h2>
-<div class="grid">
-  <div class="card soon">
-    <div class="name">Sovereign Mind</div>
-    <div class="sub">Daily practice that remembers</div>
-    <div class="store">In App Review</div>
+<!-- Puzzles -->
+<section>
+  <div class="head"><h2>Something to think about</h2><div class="rule"></div></div>
+  <p class="note">One puzzle, one case, one word. Quiet games for a sharper head.</p>
+  <div class="grid">
+    <a class="card" style="--i:0" href="https://apps.apple.com/app/id6792477637">
+      <div class="iconwrap"><img class="icon" src="/icons/6792477637.png" alt="Radix app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Radix</div>
+        <div class="sub">Where words actually come from</div>
+      </div>
+    </a>
+    <a class="card" style="--i:1" href="https://apps.apple.com/app/id6792477671">
+      <div class="iconwrap"><img class="icon" src="/icons/6792477671.png" alt="Provenance app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Provenance</div>
+        <div class="sub">One authentication case a day</div>
+      </div>
+    </a>
+    <a class="card" style="--i:2" href="https://apps.apple.com/app/id6792498652">
+      <div class="iconwrap"><img class="icon" src="/icons/6792498652.png" alt="Serene Chess app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Serene Chess</div>
+        <div class="sub">Tactics, engine, and review</div>
+      </div>
+    </a>
+    <a class="card" style="--i:3" href="https://apps.apple.com/app/id6801944894">
+      <div class="iconwrap"><img class="icon" src="/icons/6801944894.png" alt="The Weeping Knight app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">The Weeping Knight</div>
+        <div class="sub">Rustaveli's epic, as a quest</div>
+      </div>
+    </a>
   </div>
-  <div class="card soon">
-    <div class="name">Panther Skin</div>
-    <div class="sub">Barrier Scanner</div>
-    <div class="store">In App Review</div>
+</section>
+
+<!-- People -->
+<section>
+  <div class="head"><h2>People you care about</h2><div class="rule"></div></div>
+  <p class="note">Built for two, or for the handful of people you keep meaning to call.</p>
+  <div class="grid">
+    <a class="card" style="--i:0" href="https://apps.apple.com/app/id6792412633">
+      <div class="iconwrap"><img class="icon" src="/icons/6792412633.png" alt="Knock app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Knock</div>
+        <div class="sub">Tap to light up their phone</div>
+      </div>
+    </a>
+    <a class="card" style="--i:1" href="https://apps.apple.com/app/id6792507575">
+      <div class="iconwrap"><img class="icon" src="/icons/6792507575.png" alt="Embers app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Embers</div>
+        <div class="sub">Don't let friendships fade</div>
+      </div>
+    </a>
+    <a class="card" style="--i:2" href="https://apps.apple.com/app/id6792674006">
+      <div class="iconwrap"><img class="icon" src="/icons/6792674006.png" alt="NameWise app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">NameWise</div>
+        <div class="sub">Swipe and match baby names with your partner</div>
+      </div>
+    </a>
+    <a class="card" style="--i:3" href="https://apps.apple.com/app/id6792492536">
+      <div class="iconwrap"><img class="icon" src="/icons/6792492536.png" alt="Timbre app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Timbre</div>
+        <div class="sub">Voice memories for family</div>
+        <span class="price">$4.99</span>
+      </div>
+    </a>
   </div>
-</div>
+</section>
+
+<!-- Out in the world -->
+<section>
+  <div class="head"><h2>Out in the world</h2><div class="rule"></div></div>
+  <p class="note">Getting somewhere, and remembering where you have been.</p>
+  <div class="grid">
+    <a class="card" style="--i:0" href="https://apps.apple.com/app/id6792505104">
+      <div class="iconwrap"><img class="icon" src="/icons/6792505104.png" alt="Ausgang app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Ausgang</div>
+        <div class="sub">Get to the actual door</div>
+      </div>
+    </a>
+    <a class="card" style="--i:1" href="https://apps.apple.com/app/id6787550701">
+      <div class="iconwrap"><img class="icon" src="/icons/6787550701.png" alt="Heute City app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Heute City</div>
+        <div class="sub">Berlin events and day plans</div>
+      </div>
+    </a>
+    <a class="card" style="--i:2" href="https://apps.apple.com/app/id6794951044">
+      <div class="iconwrap"><img class="icon" src="/icons/6794951044.png" alt="Together app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Together</div>
+        <div class="sub">A calm New York City trip planner</div>
+      </div>
+    </a>
+    <a class="card" style="--i:3" href="https://apps.apple.com/app/id6792402683">
+      <div class="iconwrap"><img class="icon" src="/icons/6792402683.png" alt="Cairn app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Cairn</div>
+        <div class="sub">Track parks, peaks, and states</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Everyday -->
+<section>
+  <div class="head"><h2>Everyday</h2><div class="rule"></div></div>
+  <p class="note">The small decisions and the small paperwork.</p>
+  <div class="grid">
+    <a class="card" style="--i:0" href="https://apps.apple.com/app/id6792414999">
+      <div class="iconwrap"><img class="icon" src="/icons/6792414999.png" alt="Getup app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Getup</div>
+        <div class="sub">Instant fit checks and style</div>
+      </div>
+    </a>
+    <a class="card" style="--i:1" href="https://apps.apple.com/app/id6794616249">
+      <div class="iconwrap"><img class="icon" src="/icons/6794616249.png" alt="Cosma app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Cosma</div>
+        <div class="sub">Know what to wear and buy</div>
+      </div>
+    </a>
+    <a class="card" style="--i:2" href="https://apps.apple.com/app/id6792477792">
+      <div class="iconwrap"><img class="icon" src="/icons/6792477792.png" alt="Beleg app icon" width="58" height="58" loading="lazy"></div>
+      <div class="text">
+        <div class="name">Beleg</div>
+        <div class="sub">Receipts to spreadsheet, for freelancers</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Coming soon -->
+<section>
+  <div class="head"><h2>Coming soon</h2><div class="rule"></div></div>
+  <div class="grid">
+    <div class="card soon" style="--i:0">
+      <div class="iconwrap"><div class="icon placeholder" aria-hidden="true">S</div></div>
+      <div class="text">
+        <div class="name">Sovereign Mind</div>
+        <div class="sub">Daily practice that remembers what you miss</div>
+      </div>
+    </div>
+    <div class="card soon" style="--i:1">
+      <div class="iconwrap"><div class="icon placeholder" aria-hidden="true">P</div></div>
+      <div class="text">
+        <div class="name">Panther Skin</div>
+        <div class="sub">Barrier scanner</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
-  <a href="/app-policies/support.html">Support</a> &middot;
+  <span>&copy; 2026 William Alston</span>
+  <span class="sep">&middot;</span>
+  <a href="/app-policies/support.html">Support</a>
+  <span class="sep">&middot;</span>
   <a href="/app-policies/privacy.html">Privacy</a>
 </footer>
+
+</div>
 </body>
 </html>
